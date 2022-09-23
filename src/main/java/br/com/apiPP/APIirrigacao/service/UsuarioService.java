@@ -13,7 +13,7 @@ import br.com.apiPP.APIirrigacao.model.Usuario;
 
 @Service
 public class UsuarioService {
-    private final Logger log = LoggerFactory.getLogger(UsuarioService.class);
+    private final  Logger log = LoggerFactory.getLogger(UsuarioService.class);
 
     @Autowired
     UsuarioRepository usuarioRepository;
@@ -32,16 +32,17 @@ public class UsuarioService {
         log.info("Request to get All Usuarios");
         List<Usuario> usuarioList = usuarioRepository.findAll();
         log.info("Return of getAllList " + usuarioList.size());
+        return usuarioList;
     }
 
-    public void delete(Long idUsuario) { 
+    public  void delete(Long idUsuario) { 
         log.info("Request to delet Usuario : {} ", idUsuario);
         usuarioRepository.deleteById(idUsuario);
     }
 
     public List<Usuario> saveAll(List<Usuario> usuarioList) {
         log.info("Request to save Usuario : {}", usuarioList);
-        usuarioList = UsuarioRepository.saveAll(usuarioList);
+        usuarioList = usuarioRepository.saveAll(usuarioList);
         return usuarioList;
     }
 

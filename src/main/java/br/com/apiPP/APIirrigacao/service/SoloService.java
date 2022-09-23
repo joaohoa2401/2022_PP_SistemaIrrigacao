@@ -24,7 +24,7 @@ public class SoloService {
 
     public Optional<Solo> findOne(Long id_solo) {
         log.info("Request to get Solo : {} ", id_solo);
-        return soloRepository.findById(id_solo)
+        return soloRepository.findById(id_solo);
     }
 
     public List<Solo> findAllList(){
@@ -36,10 +36,10 @@ public class SoloService {
 
     public void delete(Long id_solo) {
         log.info("Request to delete id_Solo : {}", id_solo);
-        petRepository.deleteById(id_solo);
+        soloRepository.deleteById(id_solo);
     }
 
-    public List<Solo> saveAll(Liste<Solo> petList){
+    public List<Solo> saveAll(List<Solo> soloList){
         log.info("Request to save Solo : {}", soloList);
         soloList = soloRepository.saveAll(soloList);
         return soloList;
