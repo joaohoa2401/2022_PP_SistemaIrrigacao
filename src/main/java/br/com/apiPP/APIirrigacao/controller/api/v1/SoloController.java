@@ -36,7 +36,7 @@ public class  SoloController{
     } 
 
     @GetMapping("/")
-    public ResponseEntity<List<Solo>> getPets(){
+    public ResponseEntity<List<Solo>> getSolo(){
         List<Solo> soloList = soloService.findAllList();
         if(soloList.size()>0){
             return ResponseEntity.ok().body(soloList);
