@@ -18,6 +18,8 @@ import org.springframework.web.server.ResponseStatusException;
 import br.com.apiPP.APIirrigacao.model.Solo;
 import br.com.apiPP.APIirrigacao.service.SoloService;
 
+@Controller
+@RequestMapping("api/v1/solo")
 public class  SoloController{
     private static SoloService soloService;
 
