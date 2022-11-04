@@ -19,15 +19,16 @@ public class IrrigarService {
 
     @Autowired 
     IrrigarRepository irrigarRepository;
+    IrrigacaoRepository irrigacaoRepository;
 
     public Irrigar save(Irrigar irrigar){ 
         irrigar = irrigarRepository.save(irrigar);
         return irrigar;
     }
 
-    public Optional<Irrigar> findOne(long idIrrigacao){
+    public Optional<Irrigacao> findOne(long idIrrigacao){
         log.info("Request to get Irrigacao : {} ", idIrrigacao);
-        return irrigarRepository.findById(idIrrigacao);
+        return irrigacaoRepository.findById(idIrrigacao);
     }
 
     public List<Irrigar> findAllList() {

@@ -3,9 +3,10 @@ package br.com.apiPP.APIirrigacao.controller.api.v1;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +22,7 @@ import br.com.apiPP.APIirrigacao.service.IrrigacaoService;
 @Controller
 @RequestMapping("api/v1/irrigacao")
 public class IrrigacaoController{
-    private static IrrigacaoService irrigacaoService;
+    private IrrigacaoService irrigacaoService;
 
     public IrrigacaoController(IrrigacaoService irrigacaoService){
         this.irrigacaoService = irrigacaoService;
@@ -50,20 +51,20 @@ public class IrrigacaoController{
 
     @PutMapping("/")
     public ResponseEntity<Irrigacao> update(@RequestBody Irrigacao irrigacao){
-        if(irrigacao.getIdirrigacao()== null){
+        if(irrigacao.getIdIrrigacao()== null){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid Irrigacao idIrrigacao = null");
         }
-        irrigacao = irrifacaoService.save(irrigacao);
+        irrigacao = irrigacaoService.save(irrigacao);
         return ResponseEntity.ok().body(irrigacao);
     }
 
     @PostMapping("/")
     public  ResponseEntity<Irrigacao> create(@RequestBody Irrigacao irrigacao){
-        if(irrigacao.getIdirrigacao()!=null){
+        if(irrigacao.getIdIrrigacao()!=null){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "New Irrigacao can't exists idIrrigacao. ");
         }
-    Irrigacao result = irrigacaoService.save(irrigacao);
-        return ResponseEntity.ok().body(irrigacao);
+        Irrigacao result = irrigacaoService.save(irrigacao);
+        return ResponseEntity.ok().body(result);
     }
 
     @DeleteMapping("/{idIrrigacao}")

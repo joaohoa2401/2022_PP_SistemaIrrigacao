@@ -21,7 +21,7 @@ import br.com.apiPP.APIirrigacao.service.SoloService;
 @Controller
 @RequestMapping("api/v1/solo")
 public class  SoloController{
-    private static SoloService soloService;
+    private SoloService soloService;
 
     public SoloController(SoloService soloService) {
         this.soloService = soloService;
@@ -62,7 +62,7 @@ public class  SoloController{
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "New Solo can't exists id_solo. ");
         }
         Solo result = soloService.save(solo);
-        return ResponseEntity.ok().body(solo);
+        return ResponseEntity.ok().body(result);
     }
 
     @DeleteMapping("/{id_solo}")

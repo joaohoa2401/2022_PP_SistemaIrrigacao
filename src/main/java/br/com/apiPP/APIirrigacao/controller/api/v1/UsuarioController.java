@@ -21,7 +21,7 @@ import br.com.apiPP.APIirrigacao.service.UsuarioService;
 @RequestMapping("api/v1/usuario")
 
 public class UsuarioController{
-    private static UsuarioService usuarioService;
+    private UsuarioService usuarioService;
 
     public UsuarioController(UsuarioService usuarioService) {
         this.usuarioService = usuarioService;
@@ -62,7 +62,7 @@ public class UsuarioController{
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "New Usuario can't exists id. ");
         }
         Usuario result = usuarioService.save(usuario);
-        return ResponseEntity.ok().body(usuario);
+        return ResponseEntity.ok().body(result);
     }
 
     @DeleteMapping("/{idUsuario}")
